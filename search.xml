@@ -132,17 +132,6 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>分类</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
@@ -154,33 +143,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/css/universe.css"/>
-      <url>/css/universe.css</url>
-      
-        <content type="html"><![CDATA[/* 背景宇宙星光  */#universe {    display: block;    position: fixed;    margin: 0;    padding: 0;    border: 0;    outline: 0;    left: 0;    top: 0;    width: 100%;    height: 100%;    pointer-events: none;    /* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */    z-index: -1;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>照片</title>
-      <link href="/gallery/index.html"/>
-      <url>/gallery/index.html</url>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/js/runtime_2.js"/>
-      <url>/js/runtime_2.js</url>
-      
-        <content type="html"><![CDATA[var now = new Date;function createtime() {    now.setTime(now.getTime() + 1e3);    var e = new Date("06/02/2024 00:00:00"),        t = Math.trunc(234e8 + (now - e) / 1e3 * 17),        a = (t / 1496e5).toFixed(6),        o = new Date("06/02/2024 00:00:00"),        n = (now - o) / 1e3 / 60 / 60 / 24,        r = Math.floor(n),        i = (now - o) / 1e3 / 60 / 60 - 24 * r,        s = Math.floor(i); 1 == String(s).length && (s = "0" + s);    var d = (now - o) / 1e3 / 60 - 1440 * r - 60 * s,        l = Math.floor(d);    1 == String(l).length && (l = "0" + l);    var g = (now - o) / 1e3 - 86400 * r - 3600 * s - 60 * l,        b = Math.round(g);    1 == String(b).length && (b = "0" + b);    let c = ""; c = s < 18 && s >= 9 ?        `<img class='boardsign' src='https://img.shields.io/badge/CHAOS-学习摸鱼中-6adea8?style=social&logo=cakephp'         title='什么时候能够实现财富自由呀~'><br>         <div style="font-size:13px;font-weight:bold">        本站居然运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒         <i id="heartbeat" class='fas fa-heartbeat'></i> <br>         旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀</div>`        : `<img class='boardsign' src='https://img.shields.io/badge/CHAOS-打烊了喵-6adea8?style=social&logo=coffeescript'         title='下班了就该开开心心地玩耍~'><br>         <div style="font-size:13px;font-weight:bold">        本站居然运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒         <i id="heartbeat" class='fas fa-heartbeat'></i> <br>         旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀</div>`,        document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = c)} setInterval((() => { createtime() }), 1e3);]]></content>
       
     </entry>
     
@@ -198,11 +165,44 @@
     
     
     <entry>
+      <title>照片</title>
+      <link href="/gallery/index.html"/>
+      <url>/gallery/index.html</url>
+      
+        <content type="html"><![CDATA[<div class="gallery-group-main"><figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://i.loli.net/2019/11/10/T7Mu8Aod3egmC4Q.png' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">壁紙</div>  <p>收藏的一些壁紙</p>  <a href='/gallery/wallpaper'></a>  </figcaption>  </figure>  </div>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/js/cursor.js"/>
       <url>/js/cursor.js</url>
       
         <content type="html"><![CDATA[var CURSOR;Math.lerp = (a, b, n) => (1 - n) * a + n * b;const getStyle = (el, attr) => {    try {        return window.getComputedStyle            ? window.getComputedStyle(el)[attr]            : el.currentStyle[attr];    } catch (e) { }    return "";};class Cursor {    constructor() {        this.pos = { curr: null, prev: null };        this.pt = [];        this.create();        this.init();        this.render();    }    move(left, top) {        this.cursor.style["left"] = `${left}px`;        this.cursor.style["top"] = `${top}px`;    }    create() {        if (!this.cursor) {            this.cursor = document.createElement("div");            this.cursor.id = "cursor";            this.cursor.classList.add("hidden");            document.body.append(this.cursor);        }        var el = document.getElementsByTagName('*');        for (let i = 0; i < el.length; i++)            if (getStyle(el[i], "cursor") == "pointer")                this.pt.push(el[i].outerHTML);        document.body.appendChild((this.scr = document.createElement("style")));        // 这里改变鼠标指针的颜色 由svg生成        this.scr.innerHTML = `* { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='12px' height='12px'><circle cx='4' cy='4' r='4' opacity='1.0' fill='rgb(255, 0,0)'/></svg>") 4 4, auto }`;    }    refresh() {        this.scr.remove();        this.cursor.classList.remove("hover");        this.cursor.classList.remove("active");        this.pos = { curr: null, prev: null };        this.pt = [];        this.create();        this.init();        this.render();    }    init() {        document.onmouseover = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");        document.onmouseout = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");        document.onmousemove = e => { (this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = { x: e.clientX - 8, y: e.clientY - 8 }; this.cursor.classList.remove("hidden"); };        document.onmouseenter = e => this.cursor.classList.remove("hidden");        document.onmouseleave = e => this.cursor.classList.add("hidden");        document.onmousedown = e => this.cursor.classList.add("active");        document.onmouseup = e => this.cursor.classList.remove("active");    }    render() {        if (this.pos.prev) {            this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);            this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);            this.move(this.pos.prev.x, this.pos.prev.y);        } else {            this.pos.prev = this.pos.curr;        }        requestAnimationFrame(() => this.render());    }}(() => {    CURSOR = new Cursor();    // 需要重新获取列表时，使用 CURSOR.refresh()})();]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>壁纸</title>
+      <link href="/gallery/wallpaper.html"/>
+      <url>/gallery/wallpaper.html</url>
+      
+        <content type="html"><![CDATA[<div class="gallery-container" data-type="data" data-button="">      <div class="gallery-data">[{"url":"../assets/default-cover/default_cover1.png","alt":"1"},{"url":"../assets/default-cover/default_cover2.png","alt":"2"},{"url":"../assets/default-cover/default_cover3.png","alt":"3"},{"url":"../assets/default-cover/default_cover4.png","alt":"4"},{"url":"../assets/default-cover/default_cover5.png","alt":"5"},{"url":"../assets/default-cover/default_cover6.png","alt":"6"},{"url":"../assets/default-cover/default_cover7.png","alt":"7"},{"url":"../assets/default-cover/default_cover8.png","alt":"8"},{"url":"../assets/default-cover/default_cover9.png","alt":"9"},{"url":"../assets/default-cover/default_cover10.png","alt":"10"},{"url":"../assets/default-cover/default_cover11.png","alt":"11"},{"url":"../assets/default-cover/default_cover12.png","alt":"12"},{"url":"../assets/default-cover/default_cover13.png","alt":"13"},{"url":"../assets/default-cover/default_cover14.png","alt":"14"},{"url":"../assets/default-cover/default_cover15.png","alt":"15"},{"url":"../assets/default-cover/default_cover16.png","alt":"16"},{"url":"../assets/default-cover/default_cover17.png","alt":"17"},{"url":"../assets/default-cover/default_cover18.png","alt":"18"},{"url":"../assets/default-cover/default_cover19.png","alt":"19"},{"url":"../assets/default-cover/default_cover20.png","alt":"20"},{"url":"../assets/index_img.jpg","alt":"21"},{"url":"../assets/avatar.png","alt":"22"},{"url":"../assets/background.jpg","alt":"23"}]</div>      <div class="gallery-items">      </div>    </div><h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/js/runtime_2.js"/>
+      <url>/js/runtime_2.js</url>
+      
+        <content type="html"><![CDATA[var now = new Date;function createtime() {    now.setTime(now.getTime() + 1e3);    var e = new Date("06/02/2024 00:00:00"),        t = Math.trunc(234e8 + (now - e) / 1e3 * 17),        a = (t / 1496e5).toFixed(6),        o = new Date("06/02/2024 00:00:00"),        n = (now - o) / 1e3 / 60 / 60 / 24,        r = Math.floor(n),        i = (now - o) / 1e3 / 60 / 60 - 24 * r,        s = Math.floor(i); 1 == String(s).length && (s = "0" + s);    var d = (now - o) / 1e3 / 60 - 1440 * r - 60 * s,        l = Math.floor(d);    1 == String(l).length && (l = "0" + l);    var g = (now - o) / 1e3 - 86400 * r - 3600 * s - 60 * l,        b = Math.round(g);    1 == String(b).length && (b = "0" + b);    let c = ""; c = s < 18 && s >= 9 ?        `<img class='boardsign' src='https://img.shields.io/badge/CHAOS-学习摸鱼中-6adea8?style=social&logo=cakephp'         title='什么时候能够实现财富自由呀~'><br>         <div style="font-size:13px;font-weight:bold">        本站居然运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒         <i id="heartbeat" class='fas fa-heartbeat'></i> <br>         旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀</div>`        : `<img class='boardsign' src='https://img.shields.io/badge/CHAOS-打烊了喵-6adea8?style=social&logo=coffeescript'         title='下班了就该开开心心地玩耍~'><br>         <div style="font-size:13px;font-weight:bold">        本站居然运行了 ${r} 天 ${s} 小时 ${l} 分 ${b} 秒         <i id="heartbeat" class='fas fa-heartbeat'></i> <br>         旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀</div>`,        document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = c)} setInterval((() => { createtime() }), 1e3);]]></content>
       
     </entry>
     
@@ -231,20 +231,20 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title></title>
+      <link href="/css/universe.css"/>
+      <url>/css/universe.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[/* 背景宇宙星光  */#universe {    display: block;    position: fixed;    margin: 0;    padding: 0;    border: 0;    outline: 0;    left: 0;    top: 0;    width: 100%;    height: 100%;    pointer-events: none;    /* 这个是调置顶的优先级的，-1在文章页下面，背景上面，个人推荐这种 */    z-index: -1;}]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -267,6 +267,17 @@
       <title>电影</title>
       <link href="/movies/index.html"/>
       <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
