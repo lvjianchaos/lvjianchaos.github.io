@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>变量名命名的艺术 | ChaosのBlog</title><meta name="author" content="Chaos"><meta name="copyright" content="Chaos"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="The Art of Naming the Variable Names一、总论身为IT行业的小白，我们不能仅仅沉浸于代码语言的层次上或算法与数据结构的快感中，我们应该思考：但在这些基本都搞定了呢！？我们又该何去何从？ 实际上，最高深的层次往往不是代码的算法与数据结构的构建本身，而是编程的艺术。一些大师级别的人物，他们在谈到编程或软件构建上绝不仅停留在代码、语言、算法和数据结构上，而是提升到一个极">
+<meta property="og:type" content="article">
+<meta property="og:title" content="变量名命名的艺术">
+<meta property="og:url" content="https://www.chaos-ljc.top/2024/10/22/%E5%8F%98%E9%87%8F%E5%90%8D%E5%91%BD%E5%90%8D%E7%9A%84%E8%89%BA%E6%9C%AF/index.html">
+<meta property="og:site_name" content="ChaosのBlog">
+<meta property="og:description" content="The Art of Naming the Variable Names一、总论身为IT行业的小白，我们不能仅仅沉浸于代码语言的层次上或算法与数据结构的快感中，我们应该思考：但在这些基本都搞定了呢！？我们又该何去何从？ 实际上，最高深的层次往往不是代码的算法与数据结构的构建本身，而是编程的艺术。一些大师级别的人物，他们在谈到编程或软件构建上绝不仅停留在代码、语言、算法和数据结构上，而是提升到一个极">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.chaos-ljc.top/assets/images/cover_17.png">
+<meta property="article:published_time" content="2024-10-22T10:02:32.744Z">
+<meta property="article:modified_time" content="2024-10-22T10:03:58.516Z">
+<meta property="article:author" content="Chaos">
+<meta property="article:tag" content="变量名命名">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.chaos-ljc.top/assets/images/cover_17.png"><link rel="shortcut icon" href="/assets/images/avatar.png"><link rel="canonical" href="https://www.chaos-ljc.top/2024/10/22/%E5%8F%98%E9%87%8F%E5%90%8D%E5%91%BD%E5%90%8D%E7%9A%84%E8%89%BA%E6%9C%AF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '变量名命名的艺术',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-22 18:03:58'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/assets/images/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/images/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(assets/images/cover_17.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">ChaosのBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">变量名命名的艺术</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">变量名命名的艺术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-22T10:02:32.744Z" title="发表于 2024-10-22 18:02:32">2024-10-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-22T10:03:58.516Z" title="更新于 2024-10-22 18:03:58">2024-10-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="The-Art-of-Naming-the-Variable-Names"><a href="#The-Art-of-Naming-the-Variable-Names" class="headerlink" title="The Art of Naming the Variable Names"></a>The Art of Naming the Variable Names</h1><h2 id="一、总论"><a href="#一、总论" class="headerlink" title="一、总论"></a>一、总论</h2><p>身为IT行业的小白，我们不能仅仅沉浸于代码语言的层次上或算法与数据结构的快感中，我们应该思考：但在这些基本都搞定了呢！？我们又该何去何从？</p>
+<p>实际上，最高深的层次往往不是代码的算法与数据结构的构建本身，而是<strong>编程的艺术</strong>。一些大师级别的人物，他们在谈到编程或软件构建上绝不仅停留在代码、语言、算法和数据结构上，而是提升到一个极高的层次——编程的艺术。也就是说：思维和艺术将会决定你写代码的高度。</p>
+<p>而编程的艺术其中一个重要的点便是——<strong>变量名命名</strong>。</p>
+<h3 id="变量名命名的重要性"><a href="#变量名命名的重要性" class="headerlink" title="变量名命名的重要性"></a>变量名命名的重要性</h3><p>变量名真正的命名往往直接决定软件构建的效果、代码的性能，甚至可能影响到软件的安全和效益，以及所出现的问题一半都可能源于变量名命名。</p>
+<p><strong>我们为何如是说呢？</strong><u>“一个好的变量名命名不是一个即时的效果，而是一个长期的效益。”</u>一个例子：我们设想下列情景：</p>
+<p>（1）我养了一只狗🐕，它叫小黑，小黑死去之后，我又养了一只叫小白的狗🐕；这样并无问题，我们都能分清楚。</p>
+<p>（2）可是，如果我养了10000只<strong>不同</strong>（这里说不同只是方便假设，因为这里不能用数组，而是无联系的10000个变量）的鸡，那么一万只鸡我该是这样命名吗？：a,b,c,d…aa,ab,………当第二天我们说<code>鸡chicken</code>下蛋了，那么<code>鸡chicken</code>是谁呢？我们还能搞清吗？所以说变量名命名的方式直接决定变量名的所带来的后果&#x2F;效果。<strong>没有好的变量名命名，会导致程序难以理解和维护</strong>。</p>
+<p>变量名命名的规范</p>
+<p><strong>我们这里以C语言来进行代码部分的编写，以进行具体阐释。</strong></p>
+<p>关于常见的<strong>错误命名</strong>(🔺注意：这是在具有实际开发情景下的代码，不是无实际意义的语法展示示例)：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">// 不明所以，不知其意</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    <span class="type">char</span> c;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> a[<span class="number">10</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> ss = s1 + s2;</span><br><span class="line">    </span><br><span class="line">   	<span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">10</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//……</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">fff</span><span class="params">()</span> &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">havesex</span><span class="params">()</span> &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">qian</span><span class="params">()</span> &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一些<strong>规范示范</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">double</span> balance = <span class="number">100.00</span>;</span><br><span class="line">    <span class="comment">// double a = 100.00; X错；如果使用这样的代码，过一段时间后，当回看代码时，你还会知道a是余额的意思吗？</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> <span class="title function_">is_leap_year</span><span class="params">(<span class="type">int</span> year)</span> &#123;</span><br><span class="line">    <span class="comment">// TODO		==》 意思是:这里还有代码要写</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当然，这是下划线命名，有些命名是使用驼峰命名法，这异曲同工：bool isLeapYear(int year)&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们很容易发现，<strong>不同的变量名命名直接会导致阅读体验的分野</strong>。</p>
+<p>而一个标准规范的变量名命名应具备什么样的<strong>特质</strong>呢？</p>
+<p><strong>可读性好、便于记忆、见名知意</strong>；或者更直白的说：一眼就可以看出这是在干什么。我们应心怀这样一句话去命名变量——<u>“优秀的代码命名都是自解释的”</u>。</p>
+<p>仍是上述的例子：<code>判断是否为闰年</code> -<code>is_leap_year()</code>，(关于为何不用中文拼音命名而采用英语命名，这是由语言自身和历史传统影响的，这里不做阐释)，我们能否将其改为<code>is_leap()</code>呢？不能。<code>leap</code>还有跳跃之意，若是如此命名，必会造成歧义；而一个<strong>好的变量或函数名应准确表达含义</strong>，便于阅读与理解。</p>
+<h3 id="变量名命名的注意"><a href="#变量名命名的注意" class="headerlink" title="变量名命名的注意"></a>变量名命名的注意</h3><p>但是，准确表达含义并不是要求名字严格按照英文使其变得<strong>特别长</strong>。举个例子，我们定义一个变量<code>unsigned int the_max_country_number_of_the_olympic_team = 20</code>；如此定义变量名，我们一定会理解这样的变量是何种意思，但我们不难发现这样的问题：太长了！长到难以使用了！所以说，长度问题也是变量名的一个重要问题；如何<strong>对变量名的长度和完整性进行取舍</strong>，这是我们亟需掌握的能力。</p>
+<p>上述论断中，我们认识到一个优秀的变量名可以使人“一眼就可以看出这是在干什么”，也就是说<strong>给予人最最直观的体验</strong>。所以说，一些变量名往往<strong>以动词开头</strong>，如：<code>double  checkTotal(User user)&#123;return 0.00;&#125;</code>；但是一些诸如<code>double CHECK(User user)&#123;return 0.00&#125;</code>、<code>double checks(User user)&#123;return 0.00&#125;</code>、<code>double havemoney()&#123;&#125;</code>是不合常识与规范的。</p>
+<p>这里，我们写一些好的<strong>变量名命名</strong>(<u>驼峰命名法</u>)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关于速度</span></span><br><span class="line"><span class="type">double</span> trainVelocity = <span class="number">310.25</span>;		<span class="comment">// 高铁运行时速(km/h)</span></span><br><span class="line"><span class="type">double</span> velocityInMph = ;		<span class="comment">//</span></span><br><span class="line"><span class="comment">// 关于日期</span></span><br><span class="line">Date currentDate = ;</span><br><span class="line"><span class="comment">// 一些行号</span></span><br><span class="line"><span class="type">int</span> lines;</span><br><span class="line"><span class="type">int</span> linesPerPage;		<span class="comment">// 每一页的行数</span></span><br></pre></td></tr></table></figure>
+
+<p>一个小结：我们的首要认识——变量名命名十分重要，乃至直接决定着我们代码的质量、性能；甚至如果我们的变量命名是有问题的，那么我们的项目到最后总是难以重构与维护。可谓说问题之大了。</p>
+<p>我们不妨看看一些著名的项目如Linux的源码，向大师级别的人物学习。</p>
+<h2 id="二、更为恰当地命名"><a href="#二、更为恰当地命名" class="headerlink" title="二、更为恰当地命名"></a>二、更为恰当地命名</h2><p>我们肯定会有这样的<strong>疑问</strong>：使用像英语这样的语言，我们所要表达一个相同的意思常常会有不同的表述（比如说：表示钱💴，可能有人表示为<code>double wallet = 100.00</code>，而有些人表示为诸如 <code>money</code> <code> balance</code>等其他名称）。<em>所以说，这种命名方式是否为规范或恰当呢？或者说我们是否有更好的命名方式呢？而当我们面对上述这样不同单词表达相同意思的情况，又该如何选择呢？</em></p>
+<p>这里引入这样的”暴论“——一个好的名字应有<strong>2个意思</strong>：<u>1. 表达了什么</u>(如：<code>double balance; //表达的就是(用户/账户的)余额</code>)；<u>2. 单词的立意</u>(上述<code>balance</code>具有多个意思:平衡、保持平横、抵消……)，单词的立意本质上说，它就是与前面的类型等因素相称，不造成歧义即仅表现出一种明确的意思。当一个变量名具备这两种性质，那么就会知道它所要表达的本意。</p>
+<p><strong>注意</strong>：关于变量，我们所要表达的东西一定不能是怎样的；如果是，那么问题出现<u>，因为变量根本不是“怎样的”，而是表达一个”什么“</u>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 日常生活用语</span></span><br><span class="line">studentData;</span><br><span class="line"><span class="comment">// input计算机界的学术语==》是更凸显IT界特指的变量</span></span><br><span class="line">input_stu_data;</span><br><span class="line"></span><br><span class="line">inputRec;</span><br><span class="line"></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="type">double</span> sum;		</span><br><span class="line"><span class="comment">// sum的意思？虽然名词词性上是金额总数；但实际上它是属于一种计算机术语还是其他的呢？我们的立意并不清晰</span></span><br><span class="line"><span class="comment">// 假设这个sum变量定义在财务报告系统，那么这个sum是什么？是求和函数还是要干什么？所以会产生歧义，会引起混淆</span></span><br><span class="line"><span class="comment">// 因此为了准确表达总额的含义，我们不妨可以这样定义：double calcValue;这样就会很清晰的知道这是一个值、一个计算总值</span></span><br></pre></td></tr></table></figure>
+
+<p>所以，我们还是回到上述的2个意思：<u>1. 表达了什么</u>；<u>2. 单词的立意</u>。单词有各种各样的意思，在学术界它是怎样？它是否会有歧义？这是我们所要在乎与考虑的。 </p>
+<h2 id="三、讲究长度的变量"><a href="#三、讲究长度的变量" class="headerlink" title="三、讲究长度的变量"></a>三、讲究长度的变量</h2><p>大家都知道像<code>unsigned int the_max_country_number_of_the_olympic_team = 20</code>；这样的变量名长度一定是有问题的。我们<strong>参考以下论文：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=44385">Debugging effort estimation using software metrics</a>和这个网站<a target="_blank" rel="noopener" href="https://ifsq.org/indicator-SP-5.html">IFSQ:SP-5—Poor Choice of Name</a>的概述</strong>。</p>
+<p><strong>Research Findings:</strong> The effort required to <u>debug a program is minimized</u> when variables had names <u>averaging 10 to 16 characters long</u>.</p>
+<p>实际情况，在国内的企业命名长度要求大多为：9-15、10-16或<strong>8-20</strong>，还有些是8-16个。我们平常选取最大范围8-20的长度，可以说是问题不大。</p>
+<p>这里，我们还可<strong>以参阅这篇文章博客<a target="_blank" rel="noopener" href="https://willkoehrsen.github.io/data%20science/software%20engineering/data-scientists-your-variable-names-are-awful-heres-how-to-fix-them/">Data Scientists Your Variable Names Are Awful Heres How To Fix Them</a>的论述</strong>。</p>
+<p>于是，我们对上述极长的代码修改为<code>numTeamMembers</code>。</p>
+<p>注意，变量名往往和其所处的作用域来进一步补充完备意思，所以这里虽不呈现奥林匹克之意，但它应该仅作用于奥林匹克的命名空间之下。这是我们之后要谈的。</p>
+<h2 id="四、变量作用域与长度及规范"><a href="#四、变量作用域与长度及规范" class="headerlink" title="四、变量作用域与长度及规范"></a>四、变量作用域与长度及规范</h2><p>以<code>for</code>语句为例</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 变量作用域</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 函数（OOP 方法） 类</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = length - <span class="number">1</span>;i &gt;= <span class="number">0</span>;i --)</span><br><span class="line">&#123;</span><br><span class="line">   	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j &lt; i;j ++)</span><br><span class="line">   	&#123;</span><br><span class="line">       </span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	<span class="comment">// 我们会发现i和k的作用域或者说适用范围只在for语句中，这时候准确说来并无问题。</span></span><br><span class="line">	<span class="comment">// 这时变量范围被局限住了</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">// 但是</span></span><br><span class="line"><span class="type">int</span> i;</span><br><span class="line"><span class="keyword">for</span>(i = length - <span class="number">1</span>;i &gt;= <span class="number">0</span>;i --)</span><br><span class="line">&#123;</span><br><span class="line">   	<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j &lt; i;j ++)</span><br><span class="line">   	&#123;</span><br><span class="line">       </span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">i ++;</span><br><span class="line">i --;</span><br><span class="line"><span class="comment">// 若i超出for的作用范围，这时我们就不能定义为i，因为没人知道这个i是啥；</span></span><br><span class="line"><span class="comment">// 当我们定义在for循环内我们都知道这是计数器，但脱离for之后，我们的i++,i--又表示什么含义呢？</span></span><br><span class="line"><span class="comment">// 不得而知，所以不能这样命名。</span></span><br></pre></td></tr></table></figure>
+
+<p>因此，我们会发现，<u>变量名命名在什么地方会决定变量名该如何命名，函数（OOP 方法）、类、作用域都会决定你如何去命名变量</u>。</p>
+<p>这里，我们或可以参阅这本书<a target="_blank" rel="noopener" href="https://www.amazon.com/exec/obidos/ASIN/0876268165/acmorg-20">Software psychology: Human factors in computer and information systems</a>。</p>
+<p><strong>结果简要概述</strong>：特别短的名字(&lt;8)我们常定义为局部变量，在for循环内可能会更短；它的作用域可能会决定它的长和短：<strong>当一个变量名越短，可能它的作用域就越小</strong>，甚至小到i,k这样的单字符。</p>
+<p>但一些<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%98%B2%E5%BE%A1%E6%80%A7%E7%BC%96%E7%A8%8B">防御性编程</a>会可能刻意绕开这些短的变量名。</p>
+<p><strong>变量名可能一样</strong>，我们会使用命名空间等所处的域不同来进行划分以<strong>区分变量</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. wallet</span></span><br><span class="line"><span class="keyword">package</span> com.goolgle.user;</span><br><span class="line"><span class="comment">// mysql sql引入要正确</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Wallet</span> &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2. wallet  </span></span><br><span class="line"><span class="keyword">package</span> com.goolgle.dog;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Wallet</span> &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更为学术的说，我们称作这为：<strong>划分全局<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4#">命名空间</a></strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> User &#123;</span><br><span class="line">    <span class="comment">// Wallet</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Dog &#123;</span><br><span class="line">    <span class="comment">// Wallet</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于一些不支持上述<strong>划分全局命名空间</strong>的操作的语言如：<code>C</code>语言。我们可以:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">design_Emp</span><br><span class="line">dev_Emp</span><br></pre></td></tr></table></figure>
+
+<p>而对于可以使用<strong>package</strong>的<code>Java</code>语言，则更为简便:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.goolgle.design;</span><br><span class="line"><span class="comment">// mysql sql引入要正确</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Employee</span> &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.goolgle.dev;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Employee</span> &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、细化-关于变量计数词"><a href="#五、细化-关于变量计数词" class="headerlink" title="五、细化:关于变量计数词"></a>五、细化:关于变量计数词</h2><p>我们首先要明确：所要讨论的计数词<strong>是什么</strong>——这个计数不是循环中的<code>i</code>、<code>j</code> 、<code>k</code>，而是我们经常所用的计数，如：总共的人数、总分数和平均数、最大及最小值等各种各样的东西。我们在设计这些<strong>涉及到计算的意思的变量名</strong>，我们该怎样比较确恰地命名，这是此段所要探讨的。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// sum，avg/average，max，min，total……</span></span><br><span class="line">    <span class="comment">// num</span></span><br><span class="line">    <span class="comment">// 这些单词的表述都很好，但我们要注意一些点 </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 举例：员工总数</span></span><br><span class="line">    <span class="comment">// 不建议使用sum，更建议total(总计)</span></span><br><span class="line">    <span class="comment">// int total_emp; // 或直接写全:total_employees</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 为什么不用num呢？歧义的风险</span></span><br><span class="line">    <span class="comment">// int num_employees; // =》员工数量</span></span><br><span class="line">    <span class="comment">// int employee_num; // =》员工号？</span></span><br><span class="line">    <span class="comment">// 我们将其倒错会产生截然不同的意思</span></span><br><span class="line">    <span class="comment">// 所以，以上命名都不合理</span></span><br><span class="line">    <span class="comment">// 因此，我们可以对其进行规定约束：基本上，将计数词放在后面，除非特殊要求</span></span><br><span class="line">	<span class="comment">// 我们这样写：名词提前-计数词放后</span></span><br><span class="line">    <span class="comment">// 注意：这是为了好看的一种约束，这不是死板的。</span></span><br><span class="line">    <span class="comment">// 对错并无分别，取决于企业的规范</span></span><br><span class="line">    <span class="type">int</span> employee_total;</span><br><span class="line">  	<span class="comment">// 若要表达员工号，也是尽可能不用num</span></span><br><span class="line">    <span class="type">int</span> employee_index;</span><br><span class="line">    <span class="comment">// 我们把计数单词放在前面，就意味者它的中心义或内涵</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结论：常进行一种约束：**<u>名词提前-计数词放后</u>**</p>
+<h2 id="六、细化-对立词选择建议"><a href="#六、细化-对立词选择建议" class="headerlink" title="六、细化:对立词选择建议"></a>六、细化:对立词选择建议</h2><p>在计算机术语中，常有一些有意思的词，他们总是对立的，然后这些对立的词常相匹配组成一些完整的变量。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    up/down</span><br><span class="line">    old/new</span><br><span class="line">	first/last</span><br><span class="line">    min/max</span><br><span class="line">    opened/closed</span><br><span class="line">    locked/unlocked</span><br><span class="line">    ...</span><br><span class="line">    begin/end</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、细化-常量、宏与指针"><a href="#七、细化-常量、宏与指针" class="headerlink" title="七、细化:常量、宏与指针"></a>七、细化:常量、宏与指针</h2><p>建议直接参考伟大的项目<a target="_blank" rel="noopener" href="https://github.com/torvalds/linux">linux</a>的源码。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> NUM_FIVE 5  <span class="comment">// × 表示具体数字错误也就是说不能出现FIVE 可以改为数组的容量</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// C++的常量：Google常声明常量以k开头</span></span><br><span class="line"><span class="comment">// constant</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> kDaysInYear = <span class="number">100</span>;</span><br><span class="line"><span class="comment">// 题外话：匈牙利命名法</span></span><br><span class="line"><span class="type">int</span> *pSize;</span><br></pre></td></tr></table></figure>
+
+<p>这只是一个<code>约定</code></p>
+<h2 id="八、细化-循环计数器i-j-k"><a href="#八、细化-循环计数器i-j-k" class="headerlink" title="八、细化:循环计数器i,j,k"></a>八、细化:循环计数器i,j,k</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; totalEmp.count;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        data[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从编程艺术来考虑，循环当中使用<code>i,j,k</code>是否规范？实际情况是<strong>允许</strong>的（<strong>前提是</strong>必须定义<strong>在循环里面</strong>，即<strong>作用域的界定范围在循环中</strong>，不会污染到其他东西）。例：<code>JavaScript</code>这门语言若定义为全局，它就会造成<strong>变量的污染</strong>。</p>
+<p>但是，如果<code>i</code>定义在<strong>循环之外</strong>，这么写是<strong>存在问题</strong>的，因为这样的<code>i</code>很可能被循环之后的代码运用到，那此时这个<code>i</code>是什么数据？它是<strong>垃圾数据</strong>，它并没有得到有效的管理。</p>
+<p>如果我们的<code>i</code>不仅在循环内用到，还在其外用到，那么它就不能定义为<code>i</code>，而应定义为一个<strong>更具体的名称</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> record_count = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> ( condition ) &#123;</span><br><span class="line">        record_count ++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    record_count ++;</span><br><span class="line">    cout &lt;&lt; record_count &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有一种情况</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; <span class="number">9</span>;i ++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>;j &lt; i;j ++) &#123;</span><br><span class="line">            <span class="comment">// TODO</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 这样写，并不是很好</span></span><br><span class="line">    <span class="comment">// 如果for循环多且嵌套或数组二维或更高维，那就不要再i,j,k了</span></span><br><span class="line">    <span class="comment">// 因为：我们很可能会不知道谁是谁了</span></span><br><span class="line">    <span class="comment">// 而要规避掉这样的风险，或者说更好一些，只需要对变量名规范命名就可以了；这样在逻辑上，我们可以直接清晰的明白所循环的是什么</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要<strong>指明</strong>：项目工程的开发与维护不可能仅一个人搞，团队协作是常态，因此好的变量命名会带给其他人对你代码直观的理解，别人才更易接手这样的项目。</p>
+<h2 id="九、细化-枚举命名的讲究"><a href="#九、细化-枚举命名的讲究" class="headerlink" title="九、细化:枚举命名的讲究"></a>九、细化:枚举命名的讲究</h2><p>给人的感觉与常量相似，因为也是大写。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">AlternateurlTableErrors</span> &#123;</span></span><br><span class="line">        OK = <span class="number">0</span>,</span><br><span class="line">        OUT_OF_MEMORY = <span class="number">1</span>,</span><br><span class="line">        MALFORMED_INPUT = <span class="number">2</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也有些语言、企业会规定加前缀等东西。</p>
+<h2 id="十、细化-临时变量的讲究"><a href="#十、细化-临时变量的讲究" class="headerlink" title="十、细化:临时变量的讲究"></a>十、细化:临时变量的讲究</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 如果说后面还会用到temp这个变量，那么最好不要定义为temp</span></span><br><span class="line">    <span class="comment">// 它不像在for循环中的，定义作用域在内</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; <span class="number">19</span>;i ++) &#123;</span><br><span class="line">        <span class="type">int</span> temp = <span class="built_in">array</span>[i];</span><br><span class="line">        ..</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 但是如果后面还要被使用，那就不要定义为temp</span></span><br><span class="line">    <span class="comment">// 比如求三角形周长</span></span><br><span class="line">    <span class="comment">// int temp = a + b + c; ×错 有些随意 缺乏描述</span></span><br><span class="line">    <span class="type">int</span> triangle_perimeter = a + b + c;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.chaos-ljc.top">Chaos</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.chaos-ljc.top/2024/10/22/%E5%8F%98%E9%87%8F%E5%90%8D%E5%91%BD%E5%90%8D%E7%9A%84%E8%89%BA%E6%9C%AF/">https://www.chaos-ljc.top/2024/10/22/%E5%8F%98%E9%87%8F%E5%90%8D%E5%91%BD%E5%90%8D%E7%9A%84%E8%89%BA%E6%9C%AF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.chaos-ljc.top" target="_blank">ChaosのBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8F%98%E9%87%8F%E5%90%8D%E5%91%BD%E5%90%8D/">变量名命名</a></div><div class="post-share"><div class="social-share" data-image="/assets/images/cover_17.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/10/22/%E5%88%B7%E9%A2%98%E6%97%A5%E5%BF%97/" title="关于刷题日志的说明"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/images/cover_14.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">关于刷题日志的说明</div></div><div class="info-2"><div class="info-item-1">一则通知本小站不再进行刷题日志的的更新，之前的日志也全部删除😭😭😭如有需要，可前往🚀GitHub我的主页可查找到我的刷题日志🍩🍩🍩里面包含了我做过的题目中对我有所帮助的💕💕💕🎈由此进入：Algorithm-Problem🎈🙇‍非常感谢！❤❤❤END！🚀🚀🚀</div></div></div></a><a class="pagination-related" href="/2024/10/22/%E5%B9%BF%E4%B9%89%E7%99%BE%E5%90%88%E5%AE%9A%E4%B9%89%E7%9A%84%E4%B8%80%E6%AC%A1%E5%B0%9D%E8%AF%95/" title="广义百合定义的一次尝试"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/images/cover_11.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">广义百合定义的一次尝试</div></div><div class="info-2"><div class="info-item-1">【翻译】广义百合定义的一次尝试当前，“百合”这一概念被广泛用于描述女性之间的多种关系，常引发“什么算是百合？”或“这部作品算不算百合？”的争论。本文试图通过分类，促使人们从“这是否是百合？”的讨论转向“我喜欢哪种百合？”的探索。 百合的模糊性使其涵盖了不同风格的作品，推动了这一类型的广泛流行。然而，过于细化的分类可能会导致创作和市场的分散，影响百合文化的传播。对于新粉丝或未深入了解的人，百合的模糊定义容易引发困惑，并可能被“○○不是百合”的声音所影响。因此，建立一个涵盖性的定义和分类是有意义的。 我们尝试将“百合”定义为“女性之间某种特殊关系以及描写这种关系的作品或类型”。通过分析这些关系的情感和行为，我们可以将百合分为三大类：“浪漫与性吸引”、“情感依附或情感超越”、“情感纽带或亲情”。以下是这三类的详细说明：  1. 浪漫与性吸引这一类描绘女性之间的恋爱或性关系。无论是明确表达的恋情，还是虽未明说但明显可解读为恋爱的作品，都属于此类。 1-1. 逃避与代偿描绘在社会压力下（如被迫订婚或相亲）女性为逃避异性恋期待而选择同性恋爱，暂时或永久地沉浸其中。 1-2....</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/images/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Chaos</div><div class="author-info-description">人世几回伤往事,山形依旧枕寒流</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lvjianchaos"><i class="fab fa-github"></i><span>🛴前往小屋...</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/lvjianchaos" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:chaosljc@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到Chaos的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#The-Art-of-Naming-the-Variable-Names"><span class="toc-text">The Art of Naming the Variable Names</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%80%BB%E8%AE%BA"><span class="toc-text">一、总论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%90%8D%E5%91%BD%E5%90%8D%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="toc-text">变量名命名的重要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%90%8D%E5%91%BD%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F"><span class="toc-text">变量名命名的注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9B%B4%E4%B8%BA%E6%81%B0%E5%BD%93%E5%9C%B0%E5%91%BD%E5%90%8D"><span class="toc-text">二、更为恰当地命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%AE%B2%E7%A9%B6%E9%95%BF%E5%BA%A6%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text">三、讲究长度的变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%95%BF%E5%BA%A6%E5%8F%8A%E8%A7%84%E8%8C%83"><span class="toc-text">四、变量作用域与长度及规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%BB%86%E5%8C%96-%E5%85%B3%E4%BA%8E%E5%8F%98%E9%87%8F%E8%AE%A1%E6%95%B0%E8%AF%8D"><span class="toc-text">五、细化:关于变量计数词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%BB%86%E5%8C%96-%E5%AF%B9%E7%AB%8B%E8%AF%8D%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="toc-text">六、细化:对立词选择建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%BB%86%E5%8C%96-%E5%B8%B8%E9%87%8F%E3%80%81%E5%AE%8F%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-text">七、细化:常量、宏与指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E7%BB%86%E5%8C%96-%E5%BE%AA%E7%8E%AF%E8%AE%A1%E6%95%B0%E5%99%A8i-j-k"><span class="toc-text">八、细化:循环计数器i,j,k</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E7%BB%86%E5%8C%96-%E6%9E%9A%E4%B8%BE%E5%91%BD%E5%90%8D%E7%9A%84%E8%AE%B2%E7%A9%B6"><span class="toc-text">九、细化:枚举命名的讲究</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E7%BB%86%E5%8C%96-%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%B2%E7%A9%B6"><span class="toc-text">十、细化:临时变量的讲究</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/22/%E5%AD%90%E9%9D%9E%E9%B1%BC%EF%BC%8C%E5%AE%89%E7%9F%A5%E9%B1%BC%E4%B9%8B%E4%B9%90/" title="子非鱼，安知鱼之乐"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/images/cover_21.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="子非鱼，安知鱼之乐"/></a><div class="content"><a class="title" href="/2024/10/22/%E5%AD%90%E9%9D%9E%E9%B1%BC%EF%BC%8C%E5%AE%89%E7%9F%A5%E9%B1%BC%E4%B9%8B%E4%B9%90/" title="子非鱼，安知鱼之乐">子非鱼，安知鱼之乐</a><time datetime="2024-10-22T10:06:49.387Z" title="发表于 2024-10-22 18:06:49">2024-10-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/22/C%E8%AF%AD%E8%A8%80%E9%9A%8F%E8%AE%B0/" title="C语言学习随记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/images/cover_18.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言学习随记"/></a><div class="content"><a class="title" href="/2024/10/22/C%E8%AF%AD%E8%A8%80%E9%9A%8F%E8%AE%B0/" title="C语言学习随记">C语言学习随记</a><time datetime="2024-10-22T10:05:44.756Z" title="发表于 2024-10-22 18:05:44">2024-10-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/22/%E5%88%B7%E9%A2%98%E6%97%A5%E5%BF%97/" title="关于刷题日志的说明"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/images/cover_14.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于刷题日志的说明"/></a><div class="content"><a class="title" href="/2024/10/22/%E5%88%B7%E9%A2%98%E6%97%A5%E5%BF%97/" title="关于刷题日志的说明">关于刷题日志的说明</a><time datetime="2024-10-22T10:04:20.808Z" title="发表于 2024-10-22 18:04:20">2024-10-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Chaos</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>(() => {
+  const panguFn = () => {
+    if (typeof pangu === 'object') pangu.autoSpacingPage()
+    else {
+      btf.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+        .then(() => {
+          pangu.autoSpacingPage()
+        })
+    }
+  }
+
+  const panguInit = () => {
+    if (false){
+      GLOBAL_CONFIG_SITE.isPost && panguFn()
+    } else {
+      panguFn()
+    }
+  }
+
+  btf.addGlobalFn('pjaxComplete', panguInit, 'pangu')
+  document.addEventListener('DOMContentLoaded', panguInit)
+})()</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"]):not([href="/music/"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v6.2.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v4.3.1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" title="本站采用多线部署，主线路托管于Vercel"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/10/22/刷题日志/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="assets/images/cover_14.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/10/22/刷题日志/&quot;);" href="javascript:void(0);" alt="">关于刷题日志的说明</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/10/22/刷题日志/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/10/22/变量名命名的艺术/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="assets/images/cover_17.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/10/22/变量名命名的艺术/&quot;);" href="javascript:void(0);" alt="">变量名命名的艺术</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/10/22/变量名命名的艺术/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;2024/10/22/盛夏、死蝉与逝去的朋友/&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/images/cover_10.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-10-22</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;2024/10/22/盛夏、死蝉与逝去的朋友/&quot;);" href="javascript:void(0);" alt="">盛夏，死蝉与逝去的朋友</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;2024/10/22/盛夏、死蝉与逝去的朋友/&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/笔记/&quot;);" href="javascript:void(0);">笔记</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">芜杂的心绪</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/刷题日志/&quot;);" href="javascript:void(0);">刷题日志</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">回望与长眠</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover3.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/文字/&quot;);" href="javascript:void(0);">文字</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr">那些忧伤</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --></body></html>
